@@ -6,6 +6,7 @@ svd = SVD()
 filename = './data4'
 filename = './data3.csv'
 #filename = './data2.csv'
+filename = './data.csv'
 svd.load_data(filename=filename,
         sep=',',
         format={'col':0, 'row':1, 'value':2, 'ids': int})
@@ -41,11 +42,23 @@ for item in item_set:
     except Exception as e:
         print(e)
 
+import subject_relation
+import json
+x = subject_relation.subjectTagMap
+
+similar_items_good = filter(lambda x: similar_items[x][1] > 0.1, similar_items)
+print('similar items: ' + str(len(similar_items)) + '|similar items good: ' + str(len(similar_items_good)))
 for k, v in similar_items.items():
-    if v[1] > 0.1:
-        print(k, ["%d: %0.3f" % (id, weight) for (id, weight) in v])
+    if v[1] < 0.1:
+        print('bad similar items ' + k)
+        continue
+    similaries = ["%s: %0.3f" % (x.get(str(id), 'NULL'), weight) for (id, weight) in v]
+    # print(x.get(str(k), 'NULL'), ["%s: %0.3f" % (x.get(str(id), 'NULL'), weight) for (id, weight) in v])
+    print(json.dumps(similaries, ensure_ascii=False))
 
 # import pdb;pdb.set_trace()
+import sys
+sys.exit(0)
 
 print(svd.similar(ITEMID1))
 
