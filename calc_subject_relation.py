@@ -7,6 +7,7 @@ filename = './data4'
 filename = './data3.csv'
 #filename = './data2.csv'
 filename = './data.csv'
+filename = './data_l2.csv'
 svd.load_data(filename=filename,
         sep=',',
         format={'col':0, 'row':1, 'value':2, 'ids': int})
