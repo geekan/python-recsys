@@ -1,6 +1,7 @@
 
 data*.csv
 log
+subject_relation.py
 
 .idea/
 *.swp

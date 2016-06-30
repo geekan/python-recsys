@@ -8,9 +8,10 @@ filename = './data3.csv'
 #filename = './data2.csv'
 filename = './data.csv'
 filename = './data_l2.csv'
+filename = './2016.6.29.for_svd.csv'
 svd.load_data(filename=filename,
         sep=',',
-        format={'col':0, 'row':1, 'value':2, 'ids': int})
+        format={'col':0, 'row':1, 'value':2, 'ids': str})
 # col -> user, row -> item, value -> label, ids -> timestamp
 
 k = 100
